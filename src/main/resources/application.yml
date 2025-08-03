@@ -1,0 +1,44 @@
+# Spring Boot应用配置
+spring:
+  application:
+    name: fpc
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fpc?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  messages:
+    basename: i18n/messages
+  mvc:
+    static-path-pattern: /static/**
+
+# 服务器配置
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,text/css,application/javascript
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.gaoyifeng: debug
+  file:
+    name: logs/fpc.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# 自定义配置
+fpc:
+  default-frpc-path: /usr/local/bin/frpc
+  default-log-dir: logs/frpc
